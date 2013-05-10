@@ -9,10 +9,9 @@ function Bird(name, walkSpeed, flySpeed) {
 	this.flySpeed = flySpeed;
 }
 
-extend(Bird, Animal);
-
-mixin(
-	Bird.prototype,
+extend(
+	Bird,
+	Animal,
 	{
 		fly: function (time) { this.distance += time * this.flySpeed; }
 	}
