@@ -1,52 +1,43 @@
 console.log("=========================================================================================================");
 
 function extend(Child, Parent) {
-    var F = function () {
-    };
-    F.prototype = Parent.prototype;
-    Child.prototype = new F();
-    Child.prototype.constructor = Child;
-    Child.superclass = Parent.prototype;
+	var F = function () { };
+	F.prototype = Parent.prototype;
+	Child.prototype = new F();
+	Child.prototype.constructor = Child;
+	Child.superclass = Parent.prototype;
 }
 
 function mixin(dst, src) {
-    Object.keys(src).forEach(
-        function (p) {
-            dst[p] = src[p];
-        }
-    );
+	Object.keys(src).forEach(function (p) { dst[p] = src[p]; });
 }
 
 function Animal(name, walkSpeed) {
-    this.name = name;
-    this.walkSpeed = walkSpeed;
+	this.name = name;
+	this.walkSpeed = walkSpeed;
 }
 
 mixin(
-    Animal.prototype,
-    {
-        distance: 0,
-        walk: function (time) {
-            this.distance += time * this.walkSpeed;
-        }
-    }
+	Animal.prototype,
+	{
+		distance: 0,
+		walk: function (time) { this.distance += time * this.walkSpeed; }
+	}
 );
 
 function Bird(name, walkSpeed, flySpeed) {
-    Bird.superclass.constructor.apply(this, arguments);
+	Bird.superclass.constructor.apply(this, arguments);
 
-    this.flySpeed = flySpeed;
+	this.flySpeed = flySpeed;
 }
 
 extend(Bird, Animal);
 
 mixin(
-    Bird.prototype,
-    {
-        fly: function (time) {
-            this.distance += time * this.flySpeed;
-        }
-    }
+	Bird.prototype,
+	{
+		fly: function (time) { this.distance += time * this.flySpeed; }
+	}
 );
 
 var animal = new Animal("animal", 1);
