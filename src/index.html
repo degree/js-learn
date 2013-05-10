@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>JS: Animals</title>
+    <script src="./js/functions.js" type="text/javascript"></script>
+    <script src="./js/animal.class.js" type="text/javascript"></script>
+    <script src="./js/bird.class.js" type="text/javascript"></script>
 </head>
 <body>
-<script src="./js/functions.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var animal = new Animal("animal", 1);
+    var bird = new Bird("bird", 1, 5);
+    animal.walk(10);
+    bird.walk(10);
+    bird.fly(3);
+
+    console.log(animal.name + ": " + animal.distance);
+    console.log(bird.name + ": " + bird.distance);
+    console.log(bird instanceof Bird);
+    console.log(bird instanceof Animal);
+</script>
 
 </body>
 </html>
