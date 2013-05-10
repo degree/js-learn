@@ -1,11 +1,12 @@
-function extend(Child, Parent) {
+Function.prototype.extend = function(Parent, mixin) {
 	var F = function () { };
 	F.prototype = Parent.prototype;
-	Child.prototype = new F();
-	Child.prototype.constructor = Child;
-	Child.superclass = Parent.prototype;
-}
+	var f = new F();
+	this.prototype = f;
+	this.prototype.constructor = this;
+	this.superclass = Parent.prototype;
 
-function mixin(dst, src) {
-	Object.keys(src).forEach(function (p) { dst[p] = src[p]; });
+	if (mixin) {
+		Object.keys(mixin).forEach(function (p) { f[p] = mixin[p]; })
+	}
 }

@@ -8,8 +8,8 @@ function Animal(name, walkSpeed) {
 	this.walkSpeed = walkSpeed;
 }
 
-mixin(
-	Animal.prototype,
+Animal.extend(
+	Object,
 	{
 		distance: 0,
 		walk: function (time) { this.distance += time * this.walkSpeed; }
