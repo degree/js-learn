@@ -57,3 +57,5 @@ bird.fly(3);
 
 console.log(animal.name + ": " + animal.distance);
 console.log(bird.name + ": " + bird.distance);
+console.log(bird instanceof Bird);
+console.log(bird instanceof Animal);
